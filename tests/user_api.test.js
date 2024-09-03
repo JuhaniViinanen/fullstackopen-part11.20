@@ -21,7 +21,7 @@ const initUsers = [
 beforeEach(async () => {
   await User.deleteMany({})
   const users = initUsers.map(user => new User(user))
-  await Promise.all( users.map(user => user.save()) )
+  return Promise.all( users.map(user => user.save()) )
 })
 
 describe('GET /api/users', () => {
@@ -83,5 +83,5 @@ describe('POST /api/users', () => {
 })
 
 afterAll(async () => {
-  await mongoose.connection.close()
+  return mongoose.disconnect()
 })

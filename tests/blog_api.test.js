@@ -32,7 +32,7 @@ beforeEach(async () => {
   await User.deleteMany({})
   const blogs = initBlogs.map(blog => new Blog(blog))
   await Promise.all( blogs.map(blog => blog.save()) )
-  const res = await api.post('/api/users').send(initUser)
+  return api.post('/api/users').send(initUser)
 })
 
 
@@ -203,5 +203,5 @@ describe('DELETE /api/blogs/:id', () => {
 })
 
 afterAll(async () => {
-  await mongoose.connection.close()
+  return mongoose.disconnect()
 })
