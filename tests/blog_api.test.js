@@ -28,11 +28,12 @@ const initUser = {
 }
 
 beforeEach(async () => {
+  jest.setTimeout(60000)
   await Blog.deleteMany({})
   await User.deleteMany({})
   const blogs = initBlogs.map(blog => new Blog(blog))
   await Promise.all( blogs.map(blog => blog.save()) )
-  return api.post('/api/users').send(initUser)
+  await api.post('/api/users').send(initUser)
 })
 
 
@@ -203,5 +204,5 @@ describe('DELETE /api/blogs/:id', () => {
 })
 
 afterAll(async () => {
-  return mongoose.disconnect()
+  await mongoose.disconnect()
 })

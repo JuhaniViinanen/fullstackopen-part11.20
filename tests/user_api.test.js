@@ -19,9 +19,10 @@ const initUsers = [
 ]
 
 beforeEach(async () => {
+  jest.setTimeout(60000)
   await User.deleteMany({})
   const users = initUsers.map(user => new User(user))
-  return Promise.all( users.map(user => user.save()) )
+  await Promise.all( users.map(user => user.save()) )
 })
 
 describe('GET /api/users', () => {
@@ -83,5 +84,5 @@ describe('POST /api/users', () => {
 })
 
 afterAll(async () => {
-  return mongoose.disconnect()
+  await mongoose.disconnect()
 })
