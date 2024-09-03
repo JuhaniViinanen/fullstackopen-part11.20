@@ -1,19 +1,19 @@
-import { useState, useEffect, useRef } from "react"
-import Blog from "./components/Blog"
-import blogService from "./services/blogs"
-import loginService from "./services/login"
-import SuccessMessage from "./components/SuccessMessage"
-import ErrorMessage from "./components/ErrorMessage"
-import Togglable from "./components/Togglable"
-import BlogForm from "./components/BlogForm"
-import LoginForm from "./components/LoginForm"
+import { useState, useEffect, useRef } from 'react'
+import Blog from './components/Blog'
+import blogService from './services/blogs'
+import loginService from './services/login'
+import SuccessMessage from './components/SuccessMessage'
+import ErrorMessage from './components/ErrorMessage'
+import Togglable from './components/Togglable'
+import BlogForm from './components/BlogForm'
+import LoginForm from './components/LoginForm'
 
 function App() {
   const [blogs, setBlogs] = useState([])
   const [user, setUser] = useState(null)
 
-  const [successMessage, setSuccessMessage] = useState("")
-  const [errorMessage, setErrorMessage] = useState("")
+  const [successMessage, setSuccessMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
 
   const blogFormRef = useRef()
 
@@ -24,7 +24,7 @@ function App() {
   }, [])
 
   useEffect(() => {
-    const loggedUser = window.localStorage.getItem("loggedUser")
+    const loggedUser = window.localStorage.getItem('loggedUser')
     if (loggedUser) {
       const user = JSON.parse(loggedUser)
       setUser(user)
@@ -34,31 +34,31 @@ function App() {
 
   const showSuccessMessage = message => {
     setSuccessMessage(message)
-    setTimeout( () => setSuccessMessage(""), 5000 )
+    setTimeout( () => setSuccessMessage(''), 5000 )
   }
 
   const showErrorMessage = message => {
     setErrorMessage(message)
-    setTimeout( () => setErrorMessage(""), 5000 )
+    setTimeout( () => setErrorMessage(''), 5000 )
   }
 
   const handleLogin = async (username, password) => {
     try {
       const user = await loginService.login({ username, password })
-      window.localStorage.setItem("loggedUser", JSON.stringify(user))
+      window.localStorage.setItem('loggedUser', JSON.stringify(user))
       setUser(user)
       blogService.setToken(user.token)
-      showSuccessMessage("login succesful.")
+      showSuccessMessage('login succesful.')
     } catch (exception) {
       showErrorMessage(`${exception.response.data.error}`)
     }
   }
 
   const handleLogout = () => {
-    window.localStorage.removeItem("loggedUser")
+    window.localStorage.removeItem('loggedUser')
     setUser(null)
     blogService.setToken(null)
-    showSuccessMessage("logout successful.")
+    showSuccessMessage('logout successful.')
   }
 
   const handleNewBlogCreation = async newBlog => {

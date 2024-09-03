@@ -1,6 +1,7 @@
 module.exports = {
   root: true,
   env: {
+    node: true,
     browser: true,
     es2020: true,
     "jest/globals": true,
@@ -23,7 +24,7 @@ module.exports = {
     ],
     "quotes": [
         "error",
-        "double"
+        "single"
     ],
     "semi": [
         "error",

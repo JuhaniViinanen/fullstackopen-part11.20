@@ -1,6 +1,9 @@
-import axios from "axios"
-axios.defaults.baseURL = "http://localhost:3003"
-const baseURL = "/api/blogs"
+import axios from 'axios'
+
+const PORT = process.env.PORT ? process.env.PORT : import.meta.env.VITE_PORT
+
+axios.defaults.baseURL = `http://localhost:${PORT}`
+const baseURL = '/api/blogs'
 
 let token = null
 

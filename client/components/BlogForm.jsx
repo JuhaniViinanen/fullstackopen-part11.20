@@ -1,17 +1,17 @@
-import { useState } from "react"
-import PropTypes from "prop-types"
+import { useState } from 'react'
+import PropTypes from 'prop-types'
 
 const BlogForm = ({ createBlog }) => {
-  const [title, setTitle] = useState("")
-  const [author, setAuthor] = useState("")
-  const [url, setUrl] = useState("")
+  const [title, setTitle] = useState('')
+  const [author, setAuthor] = useState('')
+  const [url, setUrl] = useState('')
 
   const handleSubmit = event => {
     event.preventDefault()
     createBlog({ title, author, url })
-    setTitle("")
-    setAuthor("")
-    setUrl("")
+    setTitle('')
+    setAuthor('')
+    setUrl('')
   }
 
   return (

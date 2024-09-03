@@ -1,10 +1,10 @@
-import { useState } from "react"
-import PropTypes from "prop-types"
+import { useState } from 'react'
+import PropTypes from 'prop-types'
 
 const blogStyle = {
   paddingTop: 10,
   paddingLeft: 2,
-  border: "solid",
+  border: 'solid',
   borderWidth: 1,
   marginBottom: 5
 }
