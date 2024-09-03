@@ -3,6 +3,8 @@ const supertest = require('supertest')
 const app = require('../app')
 const User = require('../models/user')
 
+jest.setTimeout(60000)
+
 const api = supertest(app)
 
 const initUsers = [
@@ -19,7 +21,6 @@ const initUsers = [
 ]
 
 beforeEach(async () => {
-  jest.setTimeout(60000)
   await User.deleteMany({})
   const users = initUsers.map(user => new User(user))
   await Promise.all( users.map(user => user.save()) )
