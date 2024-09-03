@@ -1,3 +1,6 @@
 .env
 node_modules
 dist
+cypress/downloads
+cypress/fixtures
+cypress/screenshots
