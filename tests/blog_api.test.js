@@ -203,5 +203,5 @@ describe('DELETE /api/blogs/:id', () => {
 })
 
 afterAll(async () => {
-  mongoose.connection.close()
+  await mongoose.connection.close()
 })

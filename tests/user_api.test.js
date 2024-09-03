@@ -83,5 +83,5 @@ describe('POST /api/users', () => {
 })
 
 afterAll(async () => {
-  mongoose.connection.close()
+  await mongoose.connection.close()
 })
