@@ -30,6 +30,7 @@ const initUser = {
 }
 
 beforeEach(async () => {
+  console.log('readyState:', mongoose.connection.readyState)
   await Blog.deleteMany({})
   await User.deleteMany({})
   const blogs = initBlogs.map(blog => new Blog(blog))

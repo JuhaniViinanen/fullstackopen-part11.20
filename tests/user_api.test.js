@@ -3,7 +3,7 @@ const supertest = require('supertest')
 const app = require('../app')
 const User = require('../models/user')
 
-jest.setTimeout(60000)
+//jest.setTimeout(60000)
 
 const api = supertest(app)
 
@@ -21,6 +21,7 @@ const initUsers = [
 ]
 
 beforeEach(async () => {
+  console.log('readyState:', mongoose.connection.readyState)
   await User.deleteMany({})
   const users = initUsers.map(user => new User(user))
   await Promise.all( users.map(user => user.save()) )
