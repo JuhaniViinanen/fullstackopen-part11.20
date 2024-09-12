@@ -4,8 +4,6 @@ const app = require('../app')
 const Blog = require('../models/blog')
 const User = require('../models/user')
 
-jest.setTimeout(60000)
-
 const api = supertest(app)
 
 const initBlogs = [
@@ -30,7 +28,6 @@ const initUser = {
 }
 
 beforeEach(async () => {
-  console.log('readyState:', mongoose.connection.readyState)
   await Blog.deleteMany({})
   await User.deleteMany({})
   const blogs = initBlogs.map(blog => new Blog(blog))
