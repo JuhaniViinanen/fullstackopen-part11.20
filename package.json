@@ -13,7 +13,8 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "test:client": "jest --env=jsdom ./client/components",
-    "test:e2e": "cypress run"
+    "test:e2e": "cypress run",
+    "setup": "npm install && npm run build"
   },
   "author": "",
   "license": "ISC",
