@@ -1,11 +1,6 @@
 import axios from 'axios'
 
-const PORT = import.meta.env.VITE_PORT
-
-axios.defaults.baseURL = import.meta.env.MODE === 'production'
-  ? `https://localhost:${PORT}`
-  : `http://localhost:${PORT}`
-
+axios.defaults.baseURL = window.location.origin
 const baseURL = '/api/login'
 
 const login = async credentials => {

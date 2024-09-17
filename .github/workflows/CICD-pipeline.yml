@@ -12,7 +12,6 @@ jobs:
       MONGODB_URI: ${{ secrets.MONGODB_URI }}
       TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }}
       PORT: ${{ secrets.PORT }}
-      VITE_PORT: ${{ secrets.VITE_PORT }}
       SECRET: ${{ secrets.SECRET }}
     steps:
       - uses: actions/checkout@v4
@@ -24,7 +23,7 @@ jobs:
       - name: Lint
         run: npm run lint
       - name: Build frontend
-        run: npm run build:dev
+        run: npm run build
       - name: Test frontend
         run: npm run test:client
       - name: Test backend
