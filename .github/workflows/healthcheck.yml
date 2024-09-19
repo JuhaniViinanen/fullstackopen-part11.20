@@ -1,0 +1,26 @@
+name: Periodic Health Check
+
+on:
+  schedule:
+    - cron: '0 6 * * *'
+
+jobs:
+  health_check:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: call the health check endpoint of app
+        uses: jtalk/url-health-check-action@v4
+        with:
+          url: https://fullstackopen-part11-20.onrender.com/health
+          max-attempts: 3
+          retry-delay: 60s
+      - name: send failure notification
+        if: ${{ failure() }}
+        uses: sarisia/actions-status-discord@v1
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          nodetail: true
+          title: "BlogApp health check failed"
+          color: 0xFF0000
+          description: https://fullstackopen-part11-20.onrender.com/health
+          username: "Periodic health check"
